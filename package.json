@@ -1,0 +1,30 @@
+{
+  "name": "pern-stack-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch backend/src --exec ts-node backend/src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HakashiKatake/Pern-Stack-Project.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HakashiKatake/Pern-Stack-Project/issues"
+  },
+  "homepage": "https://github.com/HakashiKatake/Pern-Stack-Project#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
