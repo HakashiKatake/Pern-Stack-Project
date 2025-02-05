@@ -2,7 +2,7 @@ import {sql} from "../config/db.js";
 
 export const getProducts = async (req, res) => {
     try {
-        await sql`
+        const products = await sql`
             SELECT * FROM products
             ORDER BY created_at DESC
         `;
@@ -37,7 +37,7 @@ export const createProduct = async (req, res) => {
 export const getProduct = async (req, res) => {
     const { id } = req.params;
     try {
-        await sql`
+        const product = await sql`
         SELECT * FROM products WHERE id=${id}
         `;
         res.status(200).json({ success: true, data: product[0] });
@@ -53,14 +53,14 @@ export const updateProduct = async (req, res) => {
     const { name, image, price } = req.body;
 
     try {
-        await sql`
+        const updateProduct = await sql`
             UPDATE products
             SET name=${name}, image=${image}, price=${price}
             WHERE id=${id}
             RETURNING *
         `;
         
-        if(updateProdcut.length === 0) {
+        if(updateProduct.length === 0) {
             return res.status(404).json({ success: false, message: "Product not found" });
 
         }
@@ -84,7 +84,7 @@ export const deleteProduct = async (req, res) => {
         if (deletedProduct.length === 0) {
             return res.status(404).json({ success: false, message: "Product not found" });
         }
-        
+
         
         res.status(200).json({ success: true, data: deletedProduct[0] });
 
